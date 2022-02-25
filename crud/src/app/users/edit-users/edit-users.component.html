@@ -1,0 +1,71 @@
+<h3>Create Meeting Form</h3>
+<form [formGroup] = "editUser" class="editUser">
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>FirstName:</mat-label>
+      <input matInput type="text" formControlName="firstName" placeholder="Enter FirstName">
+    </mat-form-field>
+    <div class="mat-error" *ngIf="editUser.controls['firstName'].hasError('required')
+          &&editUser.controls['firstName'].touched">
+      FirstName is Required
+    </div>
+    <div class="mat-error" *ngIf="editUser.controls['firstName'].hasError('pattern')
+          &&editUser.controls['firstName'].touched">
+      Name should accept only Alphabets
+    </div>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Lastname:</mat-label>
+      <input matInput  type="text" formControlName="lastName" placeholder="Enter LastName">
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Email Address:</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Enter Email Address">
+    </mat-form-field>
+    <div class="mat-error" *ngIf="editUser.controls['email'].hasError('required')
+          &&editUser.controls['email'].touched">
+      Email is Required
+    </div>
+    <div class="mat-error" *ngIf="editUser.controls['email'].hasError('pattern')
+          &&editUser.controls['email'].touched">
+      Email Address should be a valid one
+    </div>
+  </div>
+  <div class="form-group phone-select">
+    <mat-form-field>
+      <input matInput type="text" formControlName="phone" placeholder="Enter Phone Number">
+    </mat-form-field>
+    <div class="mat-error" *ngIf="editUser.controls['phone'].hasError('required')
+        &&editUser.controls['phone'].touched">
+      Phone Number is required
+    </div>
+    <div class="mat-error" *ngIf="editUser.controls['phone'].hasError('pattern')
+        &&editUser.controls['phone'].touched">
+      Phone Number should accept only numeric and hyphen
+    </div>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <textarea matInput formControlName="address" placeholder="Enter Address">
+      </textarea>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput type="datetime-local" formControlName="meeting">
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <button mat-raised-button color="accent" type="submit" [disabled]="!editUser.valid" (click)="updateUser()">Update User</button>
+  </div>
+</form>
+
+<div *ngIf="latestData">
+  The Following User Data <strong>{{latestData.firstName}} </strong>Updated Successfully
+</div>
+
+<div *ngIf="latestData">The following user <strong>{{latestData.firstName}}</strong> updated successfully</div>
+

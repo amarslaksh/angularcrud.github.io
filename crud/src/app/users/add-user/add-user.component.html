@@ -1,0 +1,77 @@
+<h3>Create Meeting Form</h3>
+<form [formGroup] = "addUser" class="addUser">
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>FirstName:</mat-label>
+      <input matInput type="text" formControlName="firstName" placeholder="Enter FirstName">
+    </mat-form-field>
+    <div class="mat-error" *ngIf="addUser.controls['firstName'].hasError('required')
+          &&addUser.controls['firstName'].touched">
+        FirstName is Required
+    </div>
+    <div class="mat-error" *ngIf="addUser.controls['firstName'].hasError('pattern')
+          &&addUser.controls['firstName'].touched">
+      Name should accept only Alphabets
+    </div>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Lastname:</mat-label>
+      <input matInput  type="text" formControlName="lastName" placeholder="Enter LastName">
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Email Address:</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Enter Email Address">
+    </mat-form-field>
+    <div class="mat-error" *ngIf="addUser.controls['email'].hasError('required')
+          &&addUser.controls['email'].touched">
+        Email is Required
+      </div>
+      <div class="mat-error" *ngIf="addUser.controls['email'].hasError('pattern')
+          &&addUser.controls['email'].touched">
+        Email Address should be a valid one
+      </div>
+  </div>
+  <div class="form-group phone-select">
+    <mat-form-field>
+      <mat-select>
+        <mat-option *ngFor="let code of countryList" [value]="code">
+          {{code}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" formControlName="phone" placeholder="Enter Phone Number">
+    </mat-form-field>
+    <div class="mat-error" *ngIf="addUser.controls['phone'].hasError('required')
+        &&addUser.controls['phone'].touched">
+      Phone Number is required
+    </div>
+    <div class="mat-error" *ngIf="addUser.controls['phone'].hasError('pattern')
+        &&addUser.controls['phone'].touched">
+      Phone Number should accept only numeric and hyphen
+    </div>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <textarea matInput formControlName="address" placeholder="Enter Address">
+      </textarea>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput type="datetime-local" formControlName="meeting">
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <button mat-raised-button color="accent" type="submit" [disabled]="!addUser.valid" (click)="addNewUser()">Add User</button>
+  </div>
+</form>
+
+<div *ngIf="isUserAdded">
+  User Details <strong>{{newUserData.firstName}} </strong>  Added Successfully in LocalStorage
+
+  You will be redirected to User List page in 5 Seconds
+</div>

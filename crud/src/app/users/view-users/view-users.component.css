@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+}
+.meeting-btn {
+  margin-top: 20px;
+}
+.create-meeting {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+}

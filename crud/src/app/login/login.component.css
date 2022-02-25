@@ -1,0 +1,11 @@
+/*Form Styles*/
+.login {
+  text-align: center;
+}
+.login label {
+  width: 100px;
+  display: inline-block;
+}
+.login input {
+  margin: 0 0 15px;
+}
